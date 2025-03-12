@@ -1,0 +1,133 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f4e9cd;
+    color: #3a2e2a;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* 将主内容和页脚垂直排列 */
+    transition: all 0.3s ease;
+}
+
+.main-content {
+    display: flex;
+    flex: 1; /* 让main-content区域占据剩余空间 */
+    margin-bottom: 15px;
+}
+
+/* 侧边栏 */
+.sidebar {
+    width: 100px; 
+    background-color: #3a2e2a;
+    color: #f4e9cd;
+    min-height: 100vh;
+    padding: 20px;
+    transition: width 0.3s ease;
+    border-radius: 15px; /* 让四个角更柔和 */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2); /* 添加阴影，增强立体感 */
+}
+
+.avatar {
+    width: 100px; /* 设定宽度 */
+    height: 100px; /* 设定高度，必须和宽度相同 */
+    object-fit: cover; /* 确保图片填充整个框架，避免拉伸 */
+    border-radius: 50%; /* 让图片变成圆形 */
+    display: block; /* 让它独占一行 */
+    margin: 10px auto; /* 居中 */
+    border: 3px solid #3a2e2a; /* 加一个边框 */
+    opacity: 1;
+    transition: opacity 0.2s ease 0.3s; /* 延迟 0.3s，等侧边栏展开后再显示 */
+}
+
+/* 按钮样式 */
+#toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* 使用 margin: auto 来水平居中 */
+}
+
+.sidebar nav {
+    opacity: 1;
+    transition: opacity 0.2s ease 0.3s; /* 延迟 0.3s，等侧边栏展开后再显示 */
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    color: #f4e9cd;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* 主题内容区域（动态适配） */
+.content {
+    margin-left: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.content-img {
+    width: 100%;      /* 让图片填充父容器 */
+    max-width: 600px; /* 限制最大宽度，避免大屏过度拉伸 */
+    height: auto;     /* 保持图片比例 */
+    display: block;   /* 避免多余的空隙 */
+    margin: 10px auto; /* 居中对齐 */
+    border-radius: 10px; /* 让边角更柔和 */
+}
+
+/* 侧边栏折叠时的样式 */
+.sidebar.collapsed {
+    width: 30px; /* 折叠后最小宽度 */
+}
+
+/* 侧边栏折叠时，隐藏除按钮外的其他内容 */
+.sidebar.collapsed .avatar,
+.sidebar.collapsed h2,
+.sidebar.collapsed nav {
+    opacity: 0; /* 隐藏 */
+    transition: opacity 0.1s ease; /* 延迟 0.3s，等侧边栏展开后再显示 */
+}
+
+header {
+    text-align: left;
+    color: #4e91d4;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #A1C6EA; /* 浅蓝色下划线 */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #3a2e2a;
+    color: #f4e9cd;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* 移动端缩小侧边栏 */
+    }
+    .sidebar nav ul {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+    .sidebar nav ul li {
+        margin: 0 10px;
+    }
+    .content {
+        margin-left: 0;
+        padding-top: 10px;
+    }
+}
